@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = null;
+
+    var model = Model;
+    var markdownEditor = model.Value("markdownEditor");
+    var slider = model.Value<int>("slider");
+    var repeatableTextstring = model.Value<string[]>("repeatableTextstring") ?? [];
+    var multipleDropdown = model.Value<string[]>("multipleDropdown") ?? [];
+
+    var dumDbg = "";
+}
+
+<h1>Plane Home page</h1>
+<hr/>
+@Html.Raw(markdownEditor)
+<hr/>
+<p>Slider value: @(slider)</p>
+<hr/>
+<ul>
+    @foreach (var str in repeatableTextstring)
+    {
+        <li>@(str)</li>
+    }
+</ul>
+<hr/>
+<ul>
+    @foreach (var str in multipleDropdown)
+    {
+        <li>@(str)</li>
+    }
+</ul>
