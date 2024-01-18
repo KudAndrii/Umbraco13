@@ -18,7 +18,7 @@ WebApplication app = builder.Build();
 
 //await app.BootUmbracoAsync();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello World from CI/CD GCP!");
 // app.UseUmbraco()
 //     .WithMiddleware(u =>
 //     {
