@@ -1,0 +1,10 @@
+services:
+  server:
+    environment:
+      ConnectionStrings__umbracoDbDSN: Server=host.docker.internal,1433;Database=umbraco-13;User Id=sa;Password=Manager_;TrustServerCertificate=true;
+    build:
+      context: .
+      target: final
+    ports:
+      - 8080:8080
+    container_name: umbraco-13
