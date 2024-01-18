@@ -1,7 +1,17 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
+    id  : 'BUILD'
     args: ['build', '-t', 'gcr.io/dotnet-cloud-run/umbraco13:$SHORT_SHA', '.']
   - name: 'gcr.io/cloud-builders/docker'
+    id  : 'PUSH'
     args: ['push', 'gcr.io/dotnet-cloud-run/umbraco13:$SHORT_SHA']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'dotnet-cloud-run', '--region=europe-north1', '--platform=managed', '—image=gcr.io/dotnet-cloud-run/umbraco13:$SHORT_SHA']
+    id  : 'DEPLOY'
+    args:
+      - run
+      - services
+      - update
+      - umbraco13
+      - --project=dotnet-cloud-run
+      - --region=europe-north1
+      - --image=gcr.io/dotnet-cloud-run/umbraco13:$SHORT_SHA
