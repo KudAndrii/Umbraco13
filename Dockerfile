@@ -10,7 +10,7 @@ RUN dotnet publish Umbraco13.csproj -c Release -o /app --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 
 ENV ASPNETCORE_URLS=http://*:8080
-ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_ENVIRONMENT=Development
 
 WORKDIR /app
 

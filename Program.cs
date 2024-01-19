@@ -7,12 +7,10 @@ builder.CreateUmbracoBuilder()
     .AddComposers()
     .Build();
 
-if (builder.Environment.IsProduction())
-{
-    var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-    var url = $"http://0.0.0.0:{port}";
-    builder.WebHost.UseUrls(url);
-}
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var url = $"http://0.0.0.0:{port}";
+builder.WebHost.UseUrls(url);
 
 WebApplication app = builder.Build();
 
