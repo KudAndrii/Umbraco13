@@ -16,20 +16,21 @@ if (builder.Environment.IsProduction())
 
 WebApplication app = builder.Build();
 
-//await app.BootUmbracoAsync();
+await app.BootUmbracoAsync();
 
-app.MapGet("/", () => "Hello World from CI/CD GCP!");
-// app.UseUmbraco()
-//     .WithMiddleware(u =>
-//     {
-//         u.UseBackOffice();
-//         u.UseWebsite();
-//     })
-//     .WithEndpoints(u =>
-//     {
-//         u.UseInstallerEndpoints();
-//         u.UseBackOfficeEndpoints();
-//         u.UseWebsiteEndpoints();
-//     });
+// app.MapGet("/", () => "Hello World from CI/CD GCP!");
+
+app.UseUmbraco()
+    .WithMiddleware(u =>
+    {
+        u.UseBackOffice();
+        u.UseWebsite();
+    })
+    .WithEndpoints(u =>
+    {
+        u.UseInstallerEndpoints();
+        u.UseBackOfficeEndpoints();
+        u.UseWebsiteEndpoints();
+    });
 
 await app.RunAsync();
