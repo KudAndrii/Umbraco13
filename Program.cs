@@ -13,22 +13,22 @@ builder.CreateUmbracoBuilder()
 
 WebApplication app = builder.Build();
 
-await app.BootUmbracoAsync();
+// await app.BootUmbracoAsync();
 
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__umbracoDbDSN");
 app.MapGet("/test-edp", () => $"Hello World with connection string: {connectionString}");
 
-app.UseUmbraco()
-    .WithMiddleware(u =>
-    {
-        u.UseBackOffice();
-        u.UseWebsite();
-    })
-    .WithEndpoints(u =>
-    {
-        u.UseInstallerEndpoints();
-        u.UseBackOfficeEndpoints();
-        u.UseWebsiteEndpoints();
-    });
+// app.UseUmbraco()
+//     .WithMiddleware(u =>
+//     {
+//         u.UseBackOffice();
+//         u.UseWebsite();
+//     })
+//     .WithEndpoints(u =>
+//     {
+//         u.UseInstallerEndpoints();
+//         u.UseBackOfficeEndpoints();
+//         u.UseWebsiteEndpoints();
+//     });
 
 await app.RunAsync();
