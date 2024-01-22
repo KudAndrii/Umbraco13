@@ -15,7 +15,8 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
-// app.MapGet("/", () => "Hello World from CI/CD GCP!");
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__umbracoDbDSN");
+app.MapGet("/test-edp", () => $"Hello World with connection string: {connectionString}");
 
 app.UseUmbraco()
     .WithMiddleware(u =>
